@@ -29,7 +29,7 @@
         <mapping class="main.java.entities.User"/>
         <mapping class="main.java.entities.IsIn"/>
         <mapping class="main.java.entities.Message"/>
-        <mapping class="entities.Notification"/>
+        <mapping class="main.java.entities.Notification"/>
         <mapping class="main.java.entities.Privilege"/>
         <mapping class="main.java.entities.UserType"/>
 

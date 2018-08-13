@@ -3,6 +3,7 @@ package main.java.entities;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
     @Table(name = "privilege")
@@ -36,11 +37,11 @@ import java.util.Objects;
         this.privilegeName = privilegeName;
     }
 
-    public Set<UserType> getUserTypes() {
+    public Set<main.java.entities.UserType> getUserTypes() {
         return userTypes;
     }
 
-    public void setUserTypes(Set<UserType> userTypes) {
+    public void setUserTypes(Set<main.java.entities.UserType> userTypes) {
         this.userTypes = userTypes;
     }
 

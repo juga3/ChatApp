@@ -1,4 +1,4 @@
-package entities;
+package main.java.entities;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,7 +36,7 @@ import java.util.Date;
 
         @Override
         public String toString() {
-            return "entities.Notification{" +
+            return "main.java.entities.Notification{" +
                     "notificationId=" + notificationId +
                     ", notificationMessage='" + notificationMessage + '\'' +
                     ", frequency=" + frequency +
