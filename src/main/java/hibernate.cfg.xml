@@ -25,13 +25,13 @@
 
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
-        <mapping class="entities.Conversation"/>
-        <mapping class="entities.User"/>
-        <!--<mapping class="entities.IsIn"/>-->
-        <mapping class="entities.Message"/>
+        <mapping class="main.java.entities.Conversation"/>
+        <mapping class="main.java.entities.User"/>
+        <mapping class="main.java.entities.IsIn"/>
+        <mapping class="main.java.entities.Message"/>
         <mapping class="entities.Notification"/>
-        <mapping class="entities.Privilege"/>
-        <mapping class="entities.UserType"/>
+        <mapping class="main.java.entities.Privilege"/>
+        <mapping class="main.java.entities.UserType"/>
 
     </session-factory>
 

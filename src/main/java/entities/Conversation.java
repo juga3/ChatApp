@@ -1,4 +1,4 @@
-package entities;
+package main.java.entities;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "GroupID")
-        private  int groupId;
+        private  Integer groupId;
 
         @Column(name = "GroupName")
         private String groupName;
@@ -34,18 +34,50 @@ import java.util.Date;
             this.createdBy = createdBy;
         }
 
-        @Override
-        public String toString() {
-            return "Conversation{" +
-                    "groupId=" + groupId +
-                    ", groupName='" + groupName + '\'' +
-                    ", isPrivate=" + isPrivate +
-                    ", createdAt='" + createdAt + '\'' +
-                    ", createdBy='" + createdBy + '\'' +
-                    '}';
-        }
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public User getCreatedBy() {
         return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    @Override
+    public String toString() {
+        return "Conversation{" +
+                "groupId=" + groupId +
+                ", groupName='" + groupName + '\'' +
+                ", isPrivate=" + isPrivate +
+                ", createdAt=" + createdAt +
+                ", createdBy=" + createdBy +
+                '}';
     }
 }

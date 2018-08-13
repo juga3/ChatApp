@@ -30,8 +30,8 @@ public class Main {
 
             System.out.println("Getting message with id: 1");
 
-            UserType myConv = session.get(UserType.class, 1);
-            System.out.println("\nDone! Selected privilege: " + myConv);
+            User myConv = session.get(User.class, 1);
+            System.out.println("\nDone! Selected user: " + myConv);
 
 
 //            System.out.println("Getting user with id: 9");
