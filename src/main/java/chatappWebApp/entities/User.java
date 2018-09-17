@@ -41,11 +41,11 @@ import java.util.Set;
             joinColumns = @JoinColumn(name = "UserID"),
             inverseJoinColumns = @JoinColumn(name = "GroupID")
     )
-        private Set<Conversation> convos = new HashSet<>();
+        private Set<Group> convos = new HashSet<>();
 
         public User() {}
 
-        public User(String customerName, String email, String password, boolean isActive, String notificationType, Date createdAt, Set<Conversation> convos) {
+        public User(String customerName, String email, String password, boolean isActive, String notificationType, Date createdAt, Set<Group> convos) {
             this.customerName = customerName;
             this.email = email;
             this.password = password;
@@ -107,11 +107,11 @@ import java.util.Set;
             this.createdAt = createdAt;
         }
 
-        public Set<Conversation> getConvos() {
+        public Set<Group> getConvos() {
             return convos;
         }
 
-        public void setConvos(Set<Conversation> convos) {
+        public void setConvos(Set<Group> convos) {
             this.convos = convos;
         }
 

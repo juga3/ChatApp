@@ -1,4 +1,4 @@
-package chatappWebApp.sevices;
+package chatappWebApp.services;
 
 import chatappWebApp.repo.UserRepository;
 import chatappWebApp.entities.User;
@@ -12,7 +12,6 @@ public class UserService {
 
     @Autowired
     UserRepository repo;
-
 
     public boolean exists(int id) {
         return repo.existsById(id);
@@ -37,6 +36,7 @@ public class UserService {
     public User findByEmail(String email) {
         return repo.findByEmail(email).orElse(null);
     }
+
     public User findByCustomerName(String username) {
         return repo.findByCustomerName(username).orElse(null);
     }

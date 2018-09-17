@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
     @Table(name = "conversation")
-    public class Conversation {
+    public class Group {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "GroupID")
@@ -28,9 +28,9 @@ import java.util.Date;
         @JoinColumn(name = "CreatedBy")
         private User createdBy;
 
-        public Conversation() {}
+        public Group() {}
 
-        public Conversation(String groupName, boolean isPrivate, Date createdAt, User createdBy) {
+        public Group(String groupName, boolean isPrivate, Date createdAt, User createdBy) {
             this.groupName = groupName;
             this.isPrivate = isPrivate;
             this.createdAt = createdAt;
@@ -75,7 +75,7 @@ import java.util.Date;
 
     @Override
     public String toString() {
-        return "Conversation{" +
+        return "Group{" +
                 "groupId=" + groupId +
                 ", groupName='" + groupName + '\'' +
                 ", isPrivate=" + isPrivate +

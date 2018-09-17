@@ -14,7 +14,7 @@ import java.util.Date;
 
         @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
         @JoinColumn(name = "GroupID")
-        private Conversation groupId;
+        private Group groupId;
 
         @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
         @JoinColumn(name = "UserID")
@@ -33,7 +33,7 @@ import java.util.Date;
 
         public Message() {}
 
-        public Message(Conversation groupId, User userId, String message, Date createdAt, Notification notificationId) {
+        public Message(Group groupId, User userId, String message, Date createdAt, Notification notificationId) {
             this.groupId = groupId;
             this.userId = userId;
             this.message = message;

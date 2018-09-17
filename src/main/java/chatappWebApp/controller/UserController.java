@@ -1,7 +1,7 @@
 package chatappWebApp.controller;
 
 import chatappWebApp.entities.User;
-import chatappWebApp.sevices.UserService;
+import chatappWebApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
