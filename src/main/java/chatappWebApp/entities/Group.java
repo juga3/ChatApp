@@ -10,22 +10,22 @@ import java.util.Date;
     public class Group {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "GroupID")
+        @Column(name = "GroupID", nullable = false)
         private  Integer groupId;
 
-        @Column(name = "GroupName")
+        @Column(name = "GroupName", nullable = false)
         private String groupName;
 
-        @Column(name = "IsPrivate")
+        @Column(name = "IsPrivate", nullable = false)
         private boolean isPrivate;
 
         @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "CreatedAt")
+        @Column(name = "CreatedAt", nullable = false)
         private Date createdAt;
 
         @JsonIgnore
-        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-        @JoinColumn(name = "CreatedBy")
+        @OneToOne
+        @JoinColumn(name = "CreatedBy", nullable = false)
         private User createdBy;
 
         public Group() {}

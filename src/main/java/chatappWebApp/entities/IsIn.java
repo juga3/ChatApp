@@ -10,11 +10,11 @@ import chatappWebApp.Embedded.IsInId;
         @EmbeddedId
         private IsInId id;
 
-        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-        @JoinColumn(name = "TypeID")
+        @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+        @JoinColumn(name = "TypeID", nullable = false)
         private UserType typeId;
 
-        @Column(name = "IsBlocked")
+        @Column(name = "IsBlocked", nullable = false)
         private boolean isBlocked;
 
         public IsIn() {}

@@ -33,9 +33,27 @@ public class GroupService {
         return repo.findByCreator(id);
     }
 
+    public void insertGroup(Group g) {
+        repo.save(g);
+    }
+
+    public void deleteByGroupId(int id) {
+        repo.deleteByGroupId(id);
+    }
+
     public void updateGroupName(int id, String newName) {
         if (!repo.existsByGroupId(id))
             return;
         repo.updateGroupName(id, newName);
+    }
+
+    public void updatePrivacy(int id, boolean isPrivate) {
+        if (!repo.existsById(id))
+            return;
+        repo.updatePrivacy(id, isPrivate);
+    }
+
+    public boolean existsByName(String name) {
+        return repo.existsByGroupName(name);
     }
 }

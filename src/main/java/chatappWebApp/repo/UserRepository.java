@@ -13,11 +13,13 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    Optional<User> findByCustomerName(String customerName);
-    Optional<User> findByEmail(String email);
-    Optional<User> findByUserId(Integer userID);
-    boolean existsByUserId(Integer userId);
-    boolean existsByEmail(String email);
+      Optional<User> findByCustomerName(String customerName);
+      Optional<User> findByEmail(String email);
+      Optional<User> findByPhoneNo(String phoneNo);
+      Optional<User> findByUserIdAndActivationToken(int id, String activationToken);
+
+      boolean existsByEmail(String email);
+
 
     List<User> findAll();
 
@@ -41,4 +43,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT u FROM User u JOIN IsIn i ON u.userId = i.id.userId WHERE i.id.groupId = :id AND u.isActive = true")
     List<User> findActiveUsersInGroup(@Param("id") int id);
+
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE User u SET u.phoneNo = :phoneNo WHERE u.userId = :id")
+    void updatePhoneNo(@Param("id") int id, @Param("phoneNo") String phoneNo);
+
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE User u SET u.isActive = :isActive WHERE u.userId = :id")
+    void updateActivity(@Param("id") int id, @Param("isActive") boolean isActive);
 }

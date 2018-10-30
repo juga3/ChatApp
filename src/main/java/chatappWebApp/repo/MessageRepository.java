@@ -12,8 +12,10 @@ import java.util.Optional;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    Optional<Message> findByMessageId(Integer messageId);
-
     @Query("SELECT m FROM Message m WHERE m.userId.userId = :id")
-    List<Message> findAllByUserID(@Param("id") int id);
+    List<Message> findAllByUserId(@Param("id") int id);
+
+    @Query("SELECT m FROM Message m WHERE m.groupId.groupId = :id")
+    List<Message> findAllByGroupId(@Param("id") int id);
+
 }

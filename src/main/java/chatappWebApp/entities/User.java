@@ -1,5 +1,7 @@
 package chatappWebApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,51 +13,74 @@ import java.util.Set;
     public class User implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "UserID")
+        @Column(name = "UserID", unique=true, nullable=false)
         private  Integer userId;
 
         @Column(name = "CustomerName")
         private String customerName;
 
-        @Column(name = "Email")
+        @Column(name="PhoneNo", nullable = false)
+        private String phoneNo;
+
+        @Column(name = "Email", nullable = false)
         private String email;
 
-        @Column(name = "Passwrd")
+        @Column(name = "Passwrd", nullable = false)
         private String password;
 
-        @Column(name = "isActive")
+        @Column(name="ActivationToken", unique = true, nullable = false)
+        private String activationToken;
+
+        @Column(name = "isActive", nullable = false)
         private boolean isActive;
 
-        @Column(name = "NotificationType")
+        @Column(name = "NotificationType", nullable = false)
         private String notificationType;
 
         @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "createdAt")
+        @Column(name = "createdAt", nullable = false)
         private Date createdAt;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "isin",
+        @ManyToMany()
+        @JoinTable(name = "isin",
             joinColumns = @JoinColumn(name = "UserID"),
             inverseJoinColumns = @JoinColumn(name = "GroupID")
-    )
+        )
+        @JsonIgnore
         private Set<Group> convos = new HashSet<>();
 
         public User() {}
 
-        public User(String customerName, String email, String password, boolean isActive, String notificationType, Date createdAt, Set<Group> convos) {
-            this.customerName = customerName;
-            this.email = email;
-            this.password = password;
-            this.isActive = isActive;
-            this.notificationType = notificationType;
-            this.createdAt = createdAt;
-            this.convos = convos;
-        }
+    public User(String customerName, String phoneNo, String email, String password, String activationToken,
+                boolean isActive, String notificationType, Date createdAt, Set<Group> convos) {
+        this.customerName = customerName;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.password = password;
+        this.activationToken = activationToken;
+        this.isActive = isActive;
+        this.notificationType = notificationType;
+        this.createdAt = createdAt;
+        this.convos = convos;
+    }
 
-        public int getUserId() {
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getActivationToken() {
+        return activationToken;
+    }
+
+    public void setActivationToken(String activationToken) {
+        this.activationToken = activationToken;
+    }
+
+    public int getUserId() {
             return userId;
         }
 
@@ -115,16 +140,9 @@ import java.util.Set;
             this.convos = convos;
         }
 
-        @Override
-            public String toString() {
-                return "User{" +
-                        "userId=" + userId +
-                        ", customerName='" + customerName + '\'' +
-                        ", email='" + email + '\'' +
-                        ", password='" + password + '\'' +
-                        ", isActive=" + isActive +
-                        ", notificationType='" + notificationType + '\'' +
-                        ", createdAt=" + createdAt +
-                        '}';
-            }
+    @Override
+    public String toString() {
+        return "User [id=" + userId + ", userName=" + customerName + ", email=" + email + ", phoneNo=" + phoneNo + ", pass="
+                + password + ", active=" + isActive + ", activationTok=" + activationToken + "createdAt=" + createdAt + "]";
+    }
 }

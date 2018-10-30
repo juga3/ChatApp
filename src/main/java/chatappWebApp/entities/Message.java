@@ -12,11 +12,11 @@ import java.util.Date;
         @Column(name = "MessageID")
         private int messageId;
 
-        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+        @OneToOne
         @JoinColumn(name = "GroupID")
         private Group groupId;
 
-        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+        @OneToOne
         @JoinColumn(name = "UserID")
         private User userId;
 
@@ -27,7 +27,7 @@ import java.util.Date;
         @Column(name = "CreatedAt")
         private Date createdAt;
 
-        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+        @OneToOne
         @JoinColumn(name = "NotificationID")
         private Notification notificationId;
 
